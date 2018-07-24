@@ -1,70 +1,30 @@
-(function () {
-    var lastTime = 0;
-    var vendors = ['webkit', 'moz'];
-    for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
-        window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
-        window.cancelAnimationFrame =
-            window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
-    }
+function noise(el) {
+    var blocksize;
+    var tilesize;
+    var tiles_w;
+    var tiles_h;
+    var blocks_w = 0
+    var blocks_h = 0
+    var context;
+    var drawing;
+    var offBlockCanvas;
+    var offBlockContext;
 
-    if (!window.requestAnimationFrame)
-        window.requestAnimationFrame = function (callback, element) {
-            var currTime = new Date().getTime();
-            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-            var id = window.setTimeout(function () { callback(currTime + timeToCall); },
-                timeToCall);
-            lastTime = currTime + timeToCall;
-            return id;
-        };
+    var colors = [
+        [255, 255, 255, 255],
+        [220, 220, 220, 255],
+        [170, 170, 170, 255],
+        [120, 120, 120, 255],
+        [0, 0, 0, 255]
+    ];
 
-    if (!window.cancelAnimationFrame)
-        window.cancelAnimationFrame = function (id) {
-            clearTimeout(id);
-        };
-})();
-
-var h;
-var w;
-var blocksize;
-var tilesize;
-var tiles_w;
-var tiles_h;
-var blocks_w = 0
-var blocks_h = 0
-var context;
-var drawing;
-var offBlockCanvas;
-var offBlockContext;
-
-var colors = [
-    [255, 255, 255, 255],
-    [220, 220, 220, 255],
-    [170, 170, 170, 255],
-    [120, 120, 120, 255],
-    [0, 0, 0, 255]
-];
-
-function loopnoise() {
-    requestAnimationFrame(loopnoise);
-    for (i = 0; i <= tiles_h; i++) {
-        for (j = 0; j <= tiles_w; j++) {
-            var next_x = Math.floor(Math.random() * (blocksize - tilesize))
-            var next_y = Math.floor(Math.random() * (blocksize - tilesize))
-            context.drawImage(offBlockCanvas, next_x, next_y, tilesize, tilesize, j * tilesize, i * tilesize, tilesize, tilesize);
-        }
-    }
-
-
-}
-
-function noise() {
     var doc = document;
-    h = Math.max(
+    var h = Math.max(
         doc.body.scrollHeight, doc.documentElement.scrollHeight,
         doc.body.offsetHeight, doc.documentElement.offsetHeight,
         doc.body.clientHeight, doc.documentElement.clientHeight
     );
-    w = Math.max(
+    var w = Math.max(
         doc.body.scrollWidth, doc.documentElement.scrollWidth,
         doc.body.offsetWidth, doc.documentElement.offsetWidth,
         doc.body.clientWidth, doc.documentElement.clientWidth
@@ -76,7 +36,7 @@ function noise() {
     tiles_w = Math.floor(w / tilesize);
     tiles_h = Math.floor(h / tilesize);
 
-    drawing = document.getElementById("noise");
+    drawing = document.getElementById(el);
     drawing.width = w;
     drawing.height = h;
 
@@ -86,7 +46,7 @@ function noise() {
     context.fillStyle = 'black';
     context.fill();
     offBlockCanvas = document.createElement("canvas");
-    offBlockContext = offBlockCanvas.getContext("2d");
+    var offBlockContext = offBlockCanvas.getContext("2d");
     offBlockCanvas.width = blocksize;
     offBlockCanvas.height = blocksize;
 
@@ -108,6 +68,20 @@ function noise() {
 
     offBlockContext.putImageData(imageData, 0, 0);
 
+    var loopnoise = function() {
+        requestAnimationFrame(loopnoise);
+        for (i = 0; i <= tiles_h; i++) {
+            for (j = 0; j <= tiles_w; j++) {
+                var next_x = Math.floor(Math.random() * (blocksize - tilesize))
+                var next_y = Math.floor(Math.random() * (blocksize - tilesize))
+                context.drawImage(offBlockCanvas, next_x, next_y, tilesize, tilesize, j * tilesize, i * tilesize, tilesize, tilesize);
+            }
+        }
+    }
+
     loopnoise();
 }
-noise();
+
+
+noise("logo");
+noise("bg");
