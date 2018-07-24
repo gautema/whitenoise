@@ -1,10 +1,8 @@
-function noise(el) {
-    var blocksize;
-    var tilesize;
-    var tiles_w;
-    var tiles_h;
-    var blocks_w = 0
-    var blocks_h = 0
+function noise(el, fullscreen) {
+    var blocksize = 16;
+    var tilesize = 2;
+    var tiles_w = 34;
+    var tiles_h = 34;
     var context;
     var drawing;
     var offBlockCanvas;
@@ -19,26 +17,33 @@ function noise(el) {
     ];
 
     var doc = document;
-    var h = Math.max(
-        doc.body.scrollHeight, doc.documentElement.scrollHeight,
-        doc.body.offsetHeight, doc.documentElement.offsetHeight,
-        doc.body.clientHeight, doc.documentElement.clientHeight
-    );
-    var w = Math.max(
-        doc.body.scrollWidth, doc.documentElement.scrollWidth,
-        doc.body.offsetWidth, doc.documentElement.offsetWidth,
-        doc.body.clientWidth, doc.documentElement.clientWidth
-    );
-
-    blocksize = Math.floor(h / 2);
-    tilesize = Math.floor(blocksize / 8);
-
-    tiles_w = Math.floor(w / tilesize);
-    tiles_h = Math.floor(h / tilesize);
 
     drawing = document.getElementById(el);
-    drawing.width = w;
-    drawing.height = h;
+    if(fullscreen) {
+        var h = Math.max(
+            doc.body.scrollHeight, doc.documentElement.scrollHeight,
+            doc.body.offsetHeight, doc.documentElement.offsetHeight,
+            doc.body.clientHeight, doc.documentElement.clientHeight
+        );
+        var w = Math.max(
+            doc.body.scrollWidth, doc.documentElement.scrollWidth,
+            doc.body.offsetWidth, doc.documentElement.offsetWidth,
+            doc.body.clientWidth, doc.documentElement.clientWidth
+        );
+        
+        blocksize = Math.floor(h / 2);
+        tilesize = Math.floor(blocksize / 8);
+    
+        tiles_w = Math.floor(w / tilesize);
+        tiles_h = Math.floor(h / tilesize);
+
+        drawing.width = w;
+        drawing.height = h;
+    } else {
+        drawing.width = 34;
+        drawing.height = 34;  
+    }
+
 
     context = drawing.getContext("2d");
     context.beginPath();
@@ -84,4 +89,4 @@ function noise(el) {
 
 
 noise("logo");
-noise("bg");
+noise("bg", true);
