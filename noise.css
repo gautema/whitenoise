@@ -20,7 +20,7 @@ body {
 }
 
 #info {
-    padding: 10px;
+    padding: 15px 25px;
     position: absolute;
     background:rgba(0,0,0,0.7);
     bottom: 0;
@@ -30,7 +30,6 @@ body {
 #company {
     color: #fff;
     font-size: 2em;
-    padding-top: 10px;
     padding-bottom: 10px;
 }
 
@@ -46,15 +45,13 @@ body {
     width: 1em;
 }
 
-#contact > div {
-    width: 50%;
-}
 #contact > div:last-of-type {
-    padding-left: 10px;
+    padding-left: 25px;
 }
 
 #contact > div:first-of-type {
     border-right: 1px solid #fff;
+    padding-right: 25px;
 }
 
 #info a, #info {
