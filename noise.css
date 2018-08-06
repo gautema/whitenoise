@@ -21,7 +21,7 @@ body {
 }
 
 #info {
-    padding: 15px 25px;
+    padding: 10px 20px;
     position: absolute;
     background:rgba(0,0,0,0.7);
     bottom: 0;
@@ -52,12 +52,12 @@ body {
 }
 
 #contact > div:last-of-type {
-    padding-left: 25px;
+    padding-left: 20px;
 }
 
 #contact > div:first-of-type {
     border-right: 1px solid #fff;
-    padding-right: 25px;
+    padding-right: 20px;
 }
 
 #info a, #info {
@@ -72,4 +72,18 @@ body {
 }
 #info #lastname, #info #firstname {
     text-transform: uppercase;
+}
+
+@media (max-width:480px){
+    body{
+        font-size: 8pt; 
+    }
+
+    #contact > div:last-of-type {
+        padding-left: 10px;
+    }
+    
+    #contact > div:first-of-type {
+        padding-right: 10px;
+    }
 }
