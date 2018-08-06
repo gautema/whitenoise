@@ -4,7 +4,8 @@ html {
     height: 100%;
 }
 body {
-    font-family: monospace;
+    font-family: 'Press Start 2P', monospace;
+    line-height: 1.5em;
     background-color: #999;
     margin: 0 0 0 0;
     font-size: 12pt;
@@ -29,8 +30,9 @@ body {
 
 #company {
     color: #fff;
-    font-size: 2em;
+    font-size: 1.8em;
     padding-bottom: 10px;
+    text-transform: uppercase;
 }
 
 #contact {
@@ -40,9 +42,13 @@ body {
 #logo {
     border: 1px solid white;
     display: inline-block;
-    margin-bottom: -5px;
     height: 1em;
     width: 1em;
+}
+
+#contact > div > a {
+    display: block;
+    font-size: 0.8em;
 }
 
 #contact > div:last-of-type {
@@ -65,7 +71,5 @@ body {
     color: #C9A87E;
 }
 #info #lastname, #info #firstname {
-    line-height: 1em;
-    font-size: 1.5em;
     text-transform: uppercase;
 }
