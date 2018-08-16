@@ -75,6 +75,7 @@ function noise(el, fullscreen) {
 
     var loopnoise = function() {
         requestAnimationFrame(loopnoise);
+        var i;
         for (i = 0; i <= tiles_h; i++) {
             for (j = 0; j <= tiles_w; j++) {
                 var next_x = Math.floor(Math.random() * (blocksize - tilesize))
@@ -88,5 +89,5 @@ function noise(el, fullscreen) {
 }
 
 
-noise("logo");
+//noise("logo");
 noise("bg", true);
