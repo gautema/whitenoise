@@ -1,4 +1,4 @@
-let sound = () =>  {
+let playSound = () =>  {
     var audioContext = new window.AudioContext();
     var bufferSize = 4096;
     var brownNoise = (function() {
@@ -18,4 +18,3 @@ let sound = () =>  {
     
     brownNoise.connect(audioContext.destination);
 }
-sound();
