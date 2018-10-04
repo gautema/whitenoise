@@ -1,15 +1,24 @@
 <style>
     body{
-        background-color: gray;
     }
     #logo {
         display: inline-block;
-        height: 1.5em;
-        width: 1.5em;
+        max-height: 150px;
+        max-width: 150px;;
+    }
+    #bg{
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        z-index: -100;
     }
 </style>
 <body>
+    <canvas id="bg"></canvas>
     <canvas id="logo"></canvas>
 
 </body>
 <script src="lines.js"></script>
+<script src="bglines.js"></script>

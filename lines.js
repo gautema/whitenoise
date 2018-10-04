@@ -1,13 +1,15 @@
 var lines = () => {
-    drawing = document.getElementById("logo");
-    let size = 100;
+    let drawing = document.getElementById("logo");
+
+    let size = Math.min(drawing.width, drawing.height);
+
     let lines = size / 2;
     let lineWidth = 1;
     let lineWidthSpace = size / lines;
     
     drawing.width = size;
     drawing.height = size;
-    ctx = drawing.getContext("2d");
+    let ctx = drawing.getContext("2d");
     let i = 0;
     
     let arr = new Uint8Array(lines);
