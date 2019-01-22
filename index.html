@@ -2,9 +2,11 @@
 <html lang="en">
 	<title>WHITENOISE</title>
 	<script>
-		navigator.serviceWorker.register('sw.js', {
-		  scope: '.'
-		});
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', function() {
+				navigator.serviceWorker.register('/sw.js');
+			});
+		}
 	  </script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="Description" content="Company website for Whitenoise AS">
