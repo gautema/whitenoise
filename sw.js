@@ -14,7 +14,7 @@ self.addEventListener('install', function(event){
         }
         return fetch(event.request).then(function(res){
           var res2 = res.clone();
-          caches.open('horse-app').then(function(cache){
+          caches.open('whitenoise-v1').then(function(cache){
             cache.put(event.request, res2);
           });
           return res;
