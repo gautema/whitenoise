@@ -1,6 +1,11 @@
 <html>
 	<title>WHITENOISE</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script>
+		navigator.serviceWorker.register('sw.js', {
+		  scope: '.'
+		});
+	  </script>
 	<link rel="stylesheet" href="noise.css"/>
 	<link href="https://fonts.googleapis.com/css?family=Muli:900" rel="stylesheet">
 	<body onclick="playSound()">
